@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Route, Routes} from "react-router-dom";
+import {ROUTES} from "./constants/routes";
+import {StoriesContainer} from "./containers/StoriesContainer";
+import {Container} from "@mui/material";
+import {StoryPage} from "./components/StoryPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Container>
+                <Routes>
+                    <Route path={ROUTES.root}>
+                        <Route index element={<StoriesContainer/>}/>
+                        <Route path=":storyId" element={<StoryPage/>}/>
+                    </Route>
+                </Routes>
+            </Container>
+        </>
+    );
 }
 
 export default App;
